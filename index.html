@@ -16,13 +16,15 @@
 
 <body>
     <div id="mon-app">
-        <button v-on:click='increment'>increment</button>
-        <button v-on:click='decrement'>décrement</button>
-        <h1>Compteur: {{compteur}}</h1>
-        <h1>Entree Votre Nome </h1>
-        <input v-model='name'>
-        <!-- v-on:keyup='inputKeyFunc' -->
-        <h2>your name is : {{name}}</h2>
+        <button v-on:click='compteurA++'>Increment</button>
+        <button v-on:click='compteurA--'>Decrement</button>
+        <h1>Compteur: {{compteurA}} ---</h1>
+        <p>{{checkValue()}}</p>
+
+        <button v-on:click='compteurB++'>Increment B</button>
+
+        <p>{{compteurB}} ----- {{test}}</p>
+
     </div>
 
 
@@ -31,21 +33,23 @@
         new Vue({
             el: '#mon-app',
             data: {
-                compteur: 0,
-                name: ""
+                compteurA: 0,
+                compteurB: 0,
+                testdata: 0,
             },
             methods: {
-                increment: function() {
-                    this.compteur++;
-                },
-                decrement: function() {
-                    this.compteur--;
-                },
-                /*    inputKeyFunc: function(k) {
-                        this.name = k.target.value;
-                    }
-               */
+                checkValue: function() {
+                    console.log('play function');
+                    this.testdata = this.compteurA;
+                    return this.compteurA > 10 ? 'Supèerieur a 10' : 'Inferieur  A 10 ';
+                }
             },
+            computed: {
+                test: function() {
+                    console.log('computed function lance ! ');
+                    return this.testdata > 10 ? 'Supèerieur a 10' : 'Inferieur  A 10 ';
+                }
+            }
         });
     </script>
 </body>
