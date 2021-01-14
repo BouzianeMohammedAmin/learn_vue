@@ -20,7 +20,8 @@
         <button v-on:click='decrement'>décrement</button>
         <h1>Compteur: {{compteur}}</h1>
         <h1>Entree Votre Nome </h1>
-        <input v-on:keyup.enter='inputKeyFunc'>
+        <input v-model='name'>
+        <!-- v-on:keyup='inputKeyFunc' -->
         <h2>your name is : {{name}}</h2>
     </div>
 
@@ -40,10 +41,10 @@
                 decrement: function() {
                     this.compteur--;
                 },
-                inputKeyFunc: function(k) {
-                    this.name += k.key;
-                }
-
+                /*    inputKeyFunc: function(k) {
+                        this.name = k.target.value;
+                    }
+               */
             },
         });
     </script>
