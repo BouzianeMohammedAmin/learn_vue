@@ -18,8 +18,12 @@
             border: 1px solid black;
         }
         
-        .green {
-            background: greenyellow;
+        .red {
+            background: red;
+        }
+        
+        .bordure {
+            border: 10px solid black;
         }
     </style>
 </head>
@@ -28,7 +32,7 @@
     <div id="mon-app">
         <h1>Learn Vue Js </h1>
         <button v-on:click='changeColor=!changeColor'>change colar </button>
-        <div class="box" v-bind:class='{green:changeColor}'>
+        <div v-bind:class="[objCss ,changeColor ?  'bordure' :'']">
 
         </div>
     </div>
@@ -41,6 +45,14 @@
             data: {
                 changeColor: false,
             },
+            computed: {
+                objCss: function() {
+                    return {
+                        box: true,
+                        red: true,
+                    };
+                }
+            }
 
         });
     </script>
