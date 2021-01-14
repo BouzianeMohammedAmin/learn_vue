@@ -31,9 +31,12 @@
 <body>
     <div id="mon-app">
         <h1>Learn Vue Js </h1>
-        <button v-on:click='changeColor=!changeColor'>change colar </button>
-        <div v-bind:class="[objCss ,changeColor ?  'bordure' :'']"></div>
-        <p :style="monStyle"> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit, maiores. Tenetur atque unde ullam error aut tempore, exercitationem reiciendis sint quas esse obcaecati dignissimos laboriosam fugiat voluptatibus ipsum illum. Nulla!</p>
+        <button v-on:click='toggelBox=!toggelBox'>change colar </button>
+        <p v-if='num===1'>valeur is {{num}}</p>
+        <p v-else-if='num===2'>valeur is {{num}}</p>
+        <p v-else-if='num===3'>valeur is {{num}}</p>
+        <p v-else>valeur is deffrent to 1,2,3</p>
+
     </div>
 
 
@@ -42,24 +45,11 @@
         new Vue({
             el: '#mon-app',
             data: {
-                changeColor: false,
-                color: 'lightblue',
-                width: 200
+                toggelBox: true,
+                num: 55,
             },
-            computed: {
-                objCss: function() {
-                    return {
-                        box: true,
-                        red: true,
-                    };
-                },
-                monStyle: function() {
-                    return {
-                        backgroundColor: this.color,
-                        width: this.width + "px"
-                    };
-                }
-            }
+
+
 
         });
     </script>
