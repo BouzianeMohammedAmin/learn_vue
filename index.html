@@ -16,8 +16,8 @@
 
 <body>
     <div id="mon-app">
-        <button v-on:click='compteurA++'>Increment</button>
-        <button v-on:click='compteurA--'>Decrement</button>
+        <button @click='compteurA++'>Increment</button>
+        <button @click='compteurA--'>Decrement</button>
         <h1>Compteur: {{compteurA}} ---</h1>
         <p>{{checkValue()}}</p>
 
