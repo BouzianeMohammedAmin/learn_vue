@@ -19,21 +19,9 @@
         <button v-on:click='increment'>increment</button>
         <button v-on:click='decrement'>décrement</button>
         <h1>Compteur: {{compteur}}</h1>
-
-        <canvas v-on:mousemove='cords'>
-
-        </canvas>
-        <p>{{x}} / {{y}}</p>
-        <div v-on:click='foo'>
-            <p> message</p>
-            <button v-on:click='foo'>test</button>
-
-        </div>
-
-        <form v-on:submit.prevent="foo">
-            <!-- prevent stop load page  -->
-            <button>submit</button>
-        </form>
+        <h1>Entree Votre Nome </h1>
+        <input v-on:keyup.enter='inputKeyFunc'>
+        <h2>your name is : {{name}}</h2>
     </div>
 
 
@@ -43,8 +31,7 @@
             el: '#mon-app',
             data: {
                 compteur: 0,
-                x: 0,
-                y: 0,
+                name: ""
             },
             methods: {
                 increment: function() {
@@ -53,14 +40,10 @@
                 decrement: function() {
                     this.compteur--;
                 },
-                cords: function(e) {
-                    this.x = e.offsetX;
-                    this.y = e.offsetY;
-
-                },
-                foo: function() {
-                    console.log(this.compteur);
+                inputKeyFunc: function(k) {
+                    this.name += k.key;
                 }
+
             },
         });
     </script>
