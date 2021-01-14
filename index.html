@@ -32,9 +32,8 @@
     <div id="mon-app">
         <h1>Learn Vue Js </h1>
         <button v-on:click='changeColor=!changeColor'>change colar </button>
-        <div v-bind:class="[objCss ,changeColor ?  'bordure' :'']">
-
-        </div>
+        <div v-bind:class="[objCss ,changeColor ?  'bordure' :'']"></div>
+        <p :style="monStyle"> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit, maiores. Tenetur atque unde ullam error aut tempore, exercitationem reiciendis sint quas esse obcaecati dignissimos laboriosam fugiat voluptatibus ipsum illum. Nulla!</p>
     </div>
 
 
@@ -44,12 +43,20 @@
             el: '#mon-app',
             data: {
                 changeColor: false,
+                color: 'lightblue',
+                width: 200
             },
             computed: {
                 objCss: function() {
                     return {
                         box: true,
                         red: true,
+                    };
+                },
+                monStyle: function() {
+                    return {
+                        backgroundColor: this.color,
+                        width: this.width + "px"
                     };
                 }
             }
