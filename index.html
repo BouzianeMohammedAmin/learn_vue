@@ -5,24 +5,50 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        canvas {
+            width: 50;
+            height: 50;
+            border: solid;
+        }
+    </style>
 </head>
 
 <body>
     <div id="mon-app">
-        <button v-on:click='compteur++'>increment</button>
-        <button v-on:click='compteur--'>décrement</button>
+        <button v-on:click='increment'>increment</button>
+        <button v-on:click='decrement'>décrement</button>
         <h1>Compteur: {{compteur}}</h1>
-        test git
+
+        <canvas v-on:mousemove='cords'>
+
+        </canvas>
+        <p>{{x}} / {{y}}</p>
+
     </div>
+
+
     <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
     <script>
         new Vue({
             el: '#mon-app',
             data: {
                 compteur: 0,
+                x: 0,
+                y: 0,
             },
             methods: {
+                increment: function() {
+                    this.compteur++;
+                },
+                decrement: function() {
+                    this.compteur--;
+                },
+                cords: function(e) {
+                    this.x = e.offsetX;
+                    this.y = e.offsetY;
 
+                }
             },
         });
     </script>
