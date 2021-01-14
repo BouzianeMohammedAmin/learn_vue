@@ -11,20 +11,26 @@
             height: 50;
             border: solid;
         }
+        
+        .box {
+            width: 250px;
+            height: 250px;
+            border: 1px solid black;
+        }
+        
+        .green {
+            background: greenyellow;
+        }
     </style>
 </head>
 
 <body>
     <div id="mon-app">
-        <button @click='compteurA++'>Increment</button>
-        <button @click='compteurA--'>Decrement</button>
-        <h1>Compteur: {{compteurA}} ---</h1>
-        <p>{{checkValue()}}</p>
+        <h1>Learn Vue Js </h1>
+        <button v-on:click='changeColor=!changeColor'>change colar </button>
+        <div class="box" v-bind:class='{green:changeColor}'>
 
-        <button v-on:click='compteurB++'>Increment B</button>
-
-        <p>{{compteurB}} ----- {{test}}</p>
-
+        </div>
     </div>
 
 
@@ -33,36 +39,9 @@
         new Vue({
             el: '#mon-app',
             data: {
-                compteurA: 0,
-                compteurB: 0,
-                testdata: 0,
+                changeColor: false,
             },
-            methods: {
-                checkValue: function() {
-                    console.log('play function');
-                    this.testdata = this.compteurA;
-                    return this.compteurA > 10 ? 'Supèerieur a 10' : 'Inferieur  A 10 ';
-                }
-            },
-            computed: {
-                test: function() {
-                    console.log('computed function lance ! ');
-                    return this.testdata > 10 ? 'Supèerieur a 10' : 'Inferieur  A 10 ';
-                }
-            },
-            watch: {
-                compteurA: function() {
-                    ctx = this;
-                    setTimeout(function() {
-                        ctx.compteurA = 0;
-                    }, 1500);
-                    /* 
-                     setTimeout(() => {
-                        this.compteurA = 0;
-                    }, 1500);
-                    */
-                }
-            }
+
         });
     </script>
 </body>
